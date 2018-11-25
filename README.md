@@ -1,1 +1,8 @@
-# firebase-firestore-hosting-handson
+# Firebase ハンズオン
+
+## 目次
+
+- Firebase とは
+- 本ハンズオン
+  - やること
+  - やらないこと
