@@ -34,9 +34,7 @@ TanakaMidnight
 - Step1 [Firebase を使うための準備をしよう](step01.md)
 
   - Firebase にログイン
-
   - Firebase CLI のインストール
-
   - Firebase プロジェクトを作る
 
 - Step2 [静的サイトを作ろう](step02.md)
@@ -54,6 +52,13 @@ TanakaMidnight
   - 値を入れてたり消したりしてみよう
 
 - Step4 [実際に Web アプリをつくってみよう](step04.md)
+  - 匿名ログインの有効化
+  - コードの入手
+  - Firebase プロジェクトとコードの関連付け
+  - ローカル環境で確認
+  - データの挿入の作成
+  - データの表示の作成
+  - データを検索して表示の作成
 
 ### 次に勉強するために役立つ資料
 

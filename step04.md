@@ -6,7 +6,7 @@
 
 ![](images/04_1.png)
 
-## 01 匿名ログインの有効化
+## 1.匿名ログインの有効化
 
 「開発」内の「Authentication」をクリックします。
 「ログイン方法」をクリックします。
@@ -15,7 +15,7 @@
 匿名ログインの詳細はこちら参照。
 https://firebase.google.com/docs/auth/web/anonymous-auth
 
-## 02 コードの入手
+## 2.コードの入手
 
 一から作っていくと時間がかかるため、ある程度出来ているコードを取得します。
 
@@ -23,7 +23,7 @@ https://firebase.google.com/docs/auth/web/anonymous-auth
 
 `cd firebase-handson-code`
 
-## 03 Firebase プロジェクトとコードの関連付け
+## 3.Firebase プロジェクトとコードの関連付け
 
 ターミナルから以下を入力します。  
 `firebase use --add`  
@@ -37,13 +37,13 @@ https://firebase.google.com/docs/auth/web/anonymous-auth
 `default`  
 と入力し、関連付けを行います。
 
-## 04 ローカル環境で確認
+## 4.ローカル環境で確認
 
 ローカルで実行して確認してみましょう。
 `firebase serve --only hosting`
 
-## データの挿入の作成
+## 5.データの挿入の作成
 
-## データの表示の作成
+## 6.データの表示の作成
 
-## データを検索して表示の作成
+## 7.データを検索して表示の作成

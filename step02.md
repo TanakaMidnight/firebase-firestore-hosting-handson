@@ -1,6 +1,6 @@
 # Step2 静的サイトを作ろう
 
-## 1.Firebase Hosting って何
+## 1.Hosting って何
 
 https://firebase.google.com/docs/hosting/?hl=ja
 
@@ -43,7 +43,7 @@ Firebase Hosting は、本番環境レベルのウェブ コンテンツ ホス�
 ターミナルを起動し、
 
 ```
-    firebase deploy
+    firebase deploy
 ```
 
 と入力します。
@@ -66,10 +66,12 @@ Firebase Hosting は、本番環境レベルのウェブ コンテンツ ホス�
 
 「Hosting」に記載されている URL にアクセスすると、Web サイトが表示されます。
 
-「Ctrl + D」でローカル環境を終了します。
+「Ctrl + C」でローカル環境を終了します。
 
 参考 : https://firebase.google.com/docs/functions/local-emulator?hl=ja
 
 ## 5.ちょっと変更してデプロイしてみる
+
+TBD
 
 [Step3 へ](step03.md)

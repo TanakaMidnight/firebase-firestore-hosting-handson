@@ -1,6 +1,12 @@
-##
+# Step3 DB を作ってみよう
 
-## CloudFirestore の有効化
+## 1. Cloud Firestore って何？
+
+Cloud Firestore は、Firebase と Google Cloud Platform からのモバイル、ウェブ、サーバー開発に対応した、柔軟でスケーラブルな NoSQL データベースです。  
+リアルタイム リスナーを介してクライアント アプリ間でデータを同期し、モバイルとウェブのオフライン サポートを提供します。  
+これにより、ネットワークの遅延やインターネット接続に関係なく機能するレスポンシブ アプリを構築できます。
+
+## 2.Cloud Firestore の有効化
 
 「開発」内の「Database」をクリックします。
 ![](images/03_01.png)
