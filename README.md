@@ -33,11 +33,9 @@ TanakaMidnight
 
 - Step1 [Firebase を使うための準備をしよう](step01.md)
 
-  - Firebase にログイン  
-    https://firebase.google.com/
+  - Firebase にログイン
 
-  - Firebase CLI のインストール  
-    https://firebase.google.com/docs/cli/?hl=ja
+  - Firebase CLI のインストール
 
   - Firebase プロジェクトを作る
 
