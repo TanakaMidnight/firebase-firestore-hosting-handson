@@ -1,10 +1,10 @@
-# Step4 サイトとDBを繋いでみよう
+# Step4 サイトと DB を繋いでみよう
 
-ここからは実際のWebアプリを作っていきます。
+ここからは実際の Web アプリを作っていきます。
 
 ### 完成イメージ
-![](step04_image.png)
 
+![](images/04_1.png)
 
 ## 01 匿名ログインの有効化
 
@@ -15,7 +15,6 @@
 匿名ログインの詳細はこちら参照。
 https://firebase.google.com/docs/auth/web/anonymous-auth
 
-
 ## 02 コードの入手
 
 一から作っていくと時間がかかるため、ある程度出来ているコードを取得します。
@@ -24,12 +23,12 @@ https://firebase.google.com/docs/auth/web/anonymous-auth
 
 `cd firebase-handson-code`
 
+## 03 Firebase プロジェクトとコードの関連付け
 
-## 03 Firebaseプロジェクトとコードの関連付け
 ターミナルから以下を入力します。  
 `firebase use --add`  
 すると、  
-`? Which project do you want to add? `  
+`? Which project do you want to add?`  
 と表示されるので先ほど作成したプロジェクトを選択します。
 
 次に、  
@@ -38,17 +37,13 @@ https://firebase.google.com/docs/auth/web/anonymous-auth
 `default`  
 と入力し、関連付けを行います。
 
-
 ## 04 ローカル環境で確認
 
 ローカルで実行して確認してみましょう。
 `firebase serve --only hosting`
 
-
 ## データの挿入の作成
-
 
 ## データの表示の作成
 
 ## データを検索して表示の作成
-
