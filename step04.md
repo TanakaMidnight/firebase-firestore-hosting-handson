@@ -6,15 +6,7 @@
 ![](step04_image.png)
 
 
-## 01 Firebaseプロジェクトの作成
-
-Firebaseコンソールにアクセスし、「プロジェクトの追加」をクリックします。  
-「プロジェクトの追加」画面が表示されたらプロジェクト名に「handson」と入力、「Firebase 向け Google アナリティクスのデータ共有にデフォルトの設定を使用する」のチェックを外し、「次へ」をクリックします。  
-「データ共有のカスタマイズ」画面が表示されたら、値を変更せず、「プロジェクトの作成」をクリックします。  
-
-しばらく待つと、プロジェクトが作成されます。
-
-## 02 匿名ログインの有効化
+## 01 匿名ログインの有効化
 
 「開発」内の「Authentication」をクリックします。
 「ログイン方法」をクリックします。
@@ -23,23 +15,40 @@ Firebaseコンソールにアクセスし、「プロジェクトの追加」を
 匿名ログインの詳細はこちら参照。
 https://firebase.google.com/docs/auth/web/anonymous-auth
 
-## CloudFirestoreの有効化
 
-「開発」内の「Database」をクリックします。
-画面上部「Cloud Firestore」内の「データベースの作成」をクリックします。
-「セキュリティルール」画面が表示されたら、「テストモードで開始」を選択し、「有効にする」クリックします。
-
-しばらく待ちます。
-
-
-*テストモードでは誰でもデータの読み書きが可能となっているので後で設定を変更します。テストモードで本番運用するとセキュリティに問題の出ることがあるので気をつけてください。*
-
-## コードの入手
+## 02 コードの入手
 
 一から作っていくと時間がかかるため、ある程度出来ているコードを取得します。
 
-`git clone https://github.com/firebase/friendlyeats-web`
+`git clone https://github.com/tanakamidnight/`
 
-`cd friendlyeats-web`
+`cd firebase-handson-code`
 
+
+## 03 Firebaseプロジェクトとコードの関連付け
+ターミナルから以下を入力します。  
+`firebase use --add`  
+すると、  
+`? Which project do you want to add? `  
+と表示されるので先ほど作成したプロジェクトを選択します。
+
+次に、  
+`? What alias do you want to use for this project? (e.g. staging)`
+と表示されるので  
+`default`  
+と入力し、関連付けを行います。
+
+
+## 04 ローカル環境で確認
+
+ローカルで実行して確認してみましょう。
+`firebase serve --only hosting`
+
+
+## データの挿入の作成
+
+
+## データの表示の作成
+
+## データを検索して表示の作成
 
