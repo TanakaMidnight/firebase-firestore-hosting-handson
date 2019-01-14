@@ -59,12 +59,20 @@ FireStore データは、
 に分割されています。
 
 Restaurants データは以下の通りです。
-![](images/04_03.png)
+
+<img src="images/04_03.png" width="300px">
 
 Ratings データは各 Restaurant のサブコレクションとして格納します。
-![](images/04_04.png)
 
-TBW データ更新  コード
+<img src="images/04_04.png" width="300px">
+
+以下のコードをコメントアウトしてください。
+
+script/models.js(Line 55〜56)
+```
+const collection = firebase.firestore().collection('restaurants')
+return collection.add(data)
+```
 
  ブラウザに戻り、ページをリロードします。
 「モックデータを追加」ボタンを押下します。
@@ -73,7 +81,15 @@ TBW データ更新  コード
 
 Firestore からデータを取得してアプリに表示します。
 
-TBW コード
+以下のコードをコメントアウトしてください。
+
+script/models.js(Line 21〜24)
+```
+query = firebase
+  .firestore()
+  .collection('restaurants')
+  .limit(50)
+```
 
 ブラウザに戻り、ページをリロードします。
 
@@ -83,7 +99,19 @@ TBW コード
  しかし、常にリアルタイムである必要が無い処理、つまり 1 度だけ取得  したい時もあるはずです。  
 その場合の書き方について以下で解説します。
 
-TBW コード
+以下のコードをコメントアウトしてください。
+
+script/models.js(Line 12〜16)
+```
+return firebase
+  .firestore()
+  .collection('restaurants')
+  .doc(id)
+  .get()
+```
+
+ブラウザに戻り、ページをリロードします。  
+レストランをクリックすると、詳細画面が表示されるようになります。
 
 ## 8.データの並び替えとフィルタリング
 
@@ -92,20 +120,135 @@ TBW コード
 実際のアプリでは、並び替え(ソート)や絞り込み（フィルタ）などが必要になってくると思います。
  その場合の書き方について、以下で解説します。
 
-TBW コード
+以下のコードをコメントアウトしてください。
+
+script/models.js(Line 27〜40)
+```
+if (filters.category && filters.category != '') {
+  query = query.where('category', '==', filters.category)
+}
+if (filters.city && filters.city != '') {
+  query = query.where('city', '==', filters.city)
+}
+if (filters.price && filters.price != '') {
+  query = query.where('price', '==', filters.price)
+}
+if (filters.sort === 'rating') {
+  query = query.orderBy('avgRating', 'desc')
+} else if (filters.sort === 'review') {
+  query = query.orderBy('numRatings', 'desc')
+}
+```
+
+さらに、並び替えを有効にするにはインデックスを設定する必要があります。
 
 ## 9.インデックスの設定
 
-クエリの  パフォーマンスを向上されるために、FireStore にインデックスを設定します。
+FireStore にインデックスを設定します。
 
-TBW コード
+firestore/firestore.indexes.json
+```
+{
+  "indexes": [
+    {
+      "collectionId": "restaurants",
+      "fields": [
+        { "fieldPath": "city", "mode": "ASCENDING" },
+        { "fieldPath": "avgRating", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "restaurants",
+      "fields": [
+        { "fieldPath": "category", "mode": "ASCENDING" },
+        { "fieldPath": "avgRating", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "restaurants",
+      "fields": [
+        { "fieldPath": "price", "mode": "ASCENDING" },
+        { "fieldPath": "avgRating", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "restaurants",
+      "fields": [
+        { "fieldPath": "city", "mode": "ASCENDING" },
+        { "fieldPath": "numRatings", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "restaurants",
+      "fields": [
+        { "fieldPath": "category", "mode": "ASCENDING" },
+        { "fieldPath": "numRatings", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "restaurants",
+      "fields": [
+        { "fieldPath": "price", "mode": "ASCENDING" },
+        { "fieldPath": "numRatings", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "restaurants",
+      "fields": [
+        { "fieldPath": "city", "mode": "ASCENDING" },
+        { "fieldPath": "price", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "restaurants",
+      "fields": [
+        { "fieldPath": "category", "mode": "ASCENDING" },
+        { "fieldPath": "price", "mode": "ASCENDING" }
+      ]
+    }
+  ]
+}
+```
+
+画面上でも設定できますが、deployコマンドで設定を適用できます。
+
+```
+firebase deploy --only firestore:indexes
+```
+
+ブラウザに戻り、ページをリロードします。  
+ツールバーの右にあるフィルタボタンをクリックし、正しくフィルタリングできることを確認してください。
+
 
 ## 10. トランザクションの設定
 
 データの不整合を防ぐためにデータの作成、更新、削除時にトランザクションを  貼りたいことがあるはずです。
 その場合の書き方について以下で解説します。
 
-TBW 　コード
+
+以下のコードをコメントアウトしてください。
+
+script/models.js(Line 60〜77)
+```
+rating.timestamp = new Date()
+rating.userId = firebase.auth().currentUser.uid
+const collection = firebase.firestore().collection('restaurants')
+const document = collection.doc(id)
+const newRatingDocument = document.collection('ratings').doc()
+return firebase.firestore().runTransaction(function(transaction) {
+  return transaction.get(document).then(function(doc) {
+    const data = doc.data()
+    const newAverage =
+      (data.numRatings * data.avgRating + rating.rating) /
+      (data.numRatings + 1)
+    transaction.update(document, {
+      numRatings: data.numRatings + 1,
+      avgRating: newAverage
+    })
+    return transaction.set(newRatingDocument, rating)
+  })
+})
+```
 
 ## 11. セキュリティの設定
 

@@ -8,9 +8,7 @@ Cloud Firestore は、Firebase と Google Cloud Platform からのモバイル�
 
 ## 2.Cloud Firestore の有効化
 
-「開発」内の「Database」をクリックします。
-![](images/03_01.png)
-
+「開発」内の「Database」をクリックします。  
 画面上部「Cloud Firestore」内の「データベースの作成」をクリックします。
 ![](images/03_02.png)
 「セキュリティルール」画面が表示されたら、「テストモードで開始」を選択し、「有効にする」クリックします。
@@ -24,6 +22,5 @@ _テストモードでは誰でもデータの読み書きが可能となって�
 
 ## 3.値を入れてたり消したりしてみよう
 
-TBW
 
 [Step4 へ](step04.md)

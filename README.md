@@ -12,7 +12,8 @@ TanakaMidnight
 ### Firebase とは
 
 - 概要  
-  TBW
+  Firebase は、優れたアプリを開発し、ユーザーベースを拡大し、収益を高めるためのツールです。インフラ構築に手間取ることなくビジネスを収益化し、ユーザーにとっての利便性に集中できます。
+
 - 事例紹介  
   TBW
 
@@ -43,7 +44,6 @@ TanakaMidnight
   - Hosting の作成
   - デプロイ
   - ローカル環境での実行
-  - ちょっと変更してデプロイしてみる
 
 - Step3 [DB を作ってみよう](step03.md)
 
@@ -75,6 +75,12 @@ TanakaMidnight
     https://booth.pm/ja/search/Firebase
 
 - Web サイト
+  - 公式ドキュメント
+    https://firebase.google.com/docs/
+
+  - Qitaで「Firebase」を検索
+    https://qiita.com/tags/firebase
+
 
 - 動画サイト
 
