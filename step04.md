@@ -21,7 +21,7 @@ https://firebase.google.com/docs/auth/web/anonymous-auth
 一から作っていくと時間がかかるため、ある程度出来ているコードを取得します。
 
 ```
-git clone https://github.com/TanakaMidnight/firebase-firestore-hosting-handson-source`
+git clone https://github.com/TanakaMidnight/firebase-firestore-hosting-handson-source
 cd firebase-firestore-hosting-handson-source
 ```
 
