@@ -13,16 +13,17 @@
 「匿名」のステータスを「有効」にして「保存」をクリックします。
 ![](images/04_02.png)
 
-匿名ログインの詳細はこちら参照。
+匿名ログインの詳細はこちら参照。  
 https://firebase.google.com/docs/auth/web/anonymous-auth
 
 ## 2.コードの入手
 
 一から作っていくと時間がかかるため、ある程度出来ているコードを取得します。
 
-`git clone https://github.com/TanakaMidnight/firebase-firestore-hosting-handson-source`
-
-`cd firebase-firestore-hosting-handson-source`
+```
+git clone https://github.com/TanakaMidnight/firebase-firestore-hosting-handson-source`
+cd firebase-firestore-hosting-handson-source
+```
 
 ## 3.プロジェクトとコードの関連付け
 
@@ -40,14 +41,14 @@ https://firebase.google.com/docs/auth/web/anonymous-auth
 
 ## 4.ローカル環境で確認
 
-ローカルで実行して確認してみましょう。
+ローカルで実行して確認してみましょう。  
 `firebase serve --only hosting`
 
 ## 5.FireStore にデータを書き込む
 
 FireStore にデータを書き込みます。
 
-### データ・モデル
+### データ・モデル
 
 FireStore データは、
 
@@ -62,7 +63,7 @@ Restaurants データは以下の通りです。
 
 <img src="images/04_03.png" width="300px">
 
-Ratings データは各 Restaurant のサブコレクションとして格納します。
+Ratings データは各 Restaurant のサブコレクションとして格納します。
 
 <img src="images/04_04.png" width="300px">
 
@@ -74,7 +75,7 @@ const collection = firebase.firestore().collection('restaurants')
 return collection.add(data)
 ```
 
- ブラウザに戻り、ページをリロードします。
+ブラウザに戻り、ページをリロードします。
 「モックデータを追加」ボタンを押下します。
 
 ## 6.FireStore からリアルタイムにデータを表示
@@ -96,7 +97,7 @@ query = firebase
 ## 7.FireStore から 1 度きりのデータを表示
 
 6.ではリアルタイムで変更があった場合、データが更新されます。  
- しかし、常にリアルタイムである必要が無い処理、つまり 1 度だけ取得  したい時もあるはずです。  
+しかし、常にリアルタイムである必要が無い処理、つまり 1 度だけ取得したい時もあるはずです。  
 その場合の書き方について以下で解説します。
 
 以下のコードをコメントアウトしてください。
@@ -115,10 +116,10 @@ return firebase
 
 ## 8.データの並び替えとフィルタリング
 
- データの取得が出来るようになり、リストが表示されるようになりました。
+データの取得が出来るようになり、リストが表示されるようになりました。
 
-実際のアプリでは、並び替え(ソート)や絞り込み（フィルタ）などが必要になってくると思います。
- その場合の書き方について、以下で解説します。
+実際のアプリでは、並び替え(ソート)や絞り込み（フィルタ）などが必要になってくると思います。  
+その場合の書き方について、以下で解説します。
 
 以下のコードをコメントアウトしてください。
 
@@ -140,11 +141,11 @@ if (filters.sort === 'rating') {
 }
 ```
 
-さらに、並び替えを有効にするにはインデックスを設定する必要があります。
+さらに、並び替えを有効にするにはインデックスを設定する必要があります。
 
 ## 9.インデックスの設定
 
-FireStore にインデックスを設定します。
+FireStore にインデックスを設定します。
 
 firestore/firestore.indexes.json
 ```
@@ -210,19 +211,19 @@ firestore/firestore.indexes.json
 }
 ```
 
-画面上でも設定できますが、deployコマンドで設定を適用できます。
+画面上でも設定できますが、deployコマンドで設定を適用できます。
 
 ```
 firebase deploy --only firestore:indexes
 ```
 
 ブラウザに戻り、ページをリロードします。  
-ツールバーの右にあるフィルタボタンをクリックし、正しくフィルタリングできることを確認してください。
+ツールバーの右にあるフィルタボタンをクリックし、正しくフィルタリングできることを確認してください。
 
 
-## 10. トランザクションの設定
+## 10. トランザクションの設定
 
-データの不整合を防ぐためにデータの作成、更新、削除時にトランザクションを  貼りたいことがあるはずです。
+データの不整合を防ぐためにデータの作成、更新、削除時にトランザクションを  貼りたいことがあるはずです。
 その場合の書き方について以下で解説します。
 
 
@@ -252,7 +253,7 @@ return firebase.firestore().runTransaction(function(transaction) {
 
 ## 11. セキュリティの設定
 
-Step3 で  データベースの作成を行いましたが、その際のセキュリティルールで「テストモード」を選択していました。  
+Step3 で  データベースの作成を行いましたが、その際のセキュリティルールで「テストモード」を選択していました。  
 この「テストモード」はすべてのユーザーがデータベースの読み書きが行えてしまい、セキュリティに問題が発生しています。  
 セキュリティルールを以下で正しく設定します。
 
@@ -288,7 +289,7 @@ service cloud.firestore {
 
 ```
 
- ターミナルから以下を入力します。
+ ターミナルから以下を入力します。
 
 ```
 firebase deploy --only firestore:rules
